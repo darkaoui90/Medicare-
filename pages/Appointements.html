@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html>
+    <head>
+ <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="../src/output.css" rel="stylesheet">
+
+    </head>
+
+    <body>
+     <nav class="bg-blue-500 h-18 w-full flex items-center justify-around px-8">
+  <div class="flex gap-2 items-center   ">
+    <img src="/pictures/medical-team.png" alt="healthcare" class="h-10  ">
+    <p class="text-amber-50">Medicare+</p>
+    
+
+
+
+  </div>
+   <div class="flex">
+    <ul class="flex space-x-8 text-amber-50">
+      <li class="hover:text-black cursor-pointer"><a href="../index.html">Home</a></li>
+      <li><a href="../pages/Doctors.html">Doctors</a></li>
+      <li><a href="../pages/Appointements.html">Appointements</a></li>
+      <li><a href="#">Health Tracking</a></li>
+        
+
+
+
+
+    </ul>
+   </div>
+  <div class="flex justify-between gap-5 items-center-safe">
+                <h6 class="text-1xl text-amber-50">Light</h6>
+               <label for="check" class="bg-blue-900 cursor-pointer relative w-20 h-10 rounded-full">
+                <input type="checkbox" id="check" class="sr-only peer">
+                <span class="w-2/5 h-4/5 bg-blue-300 absolute rounded-full
+                left-1 top-1 peer-checked:bg-blue-600 peer-checked:left-11
+                transition-all duration-500"></span>
+                </label>
+               <h6 class="text-1xl text-amber-50">Dark</h6>
+            </div>
+ </nav>
+   <section class="container mx-auto px-4 py-10 md:py-24">
+    
+    <div class="mb-8">
+        
+        <h1 class="text-3xl md:text-5xl font-extrabold text-gray-900 leading-tight">
+           Book an Appointment
+        </h1>
+        
+        <p class="text-lg text-gray-600 mt-2">
+           Schedule your visit with our healthcare professionals
+        </p>
+    </div>   
+    
+    <div class="bg-white p-6 md:p-10 shadow-xl rounded-xl">
+        <h2 class="text-2xl font-bold text-gray-800 mb-6">
+            New Appointment
+        </h2>
+        
+        <form class="space-y-6" id="appointmentForm">
+            
+           
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                
+              
+                <div>
+                    <label for="full-name" class="block text-sm font-medium text-gray-700 ">
+                        Full Name
+                    </label>
+                    <div class="mt-1">
+                        <input type="text" name="full-name" id="full-name" required
+                               class="block w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
+                               placeholder="Mohammed Darkaoui">
+                    </div>
+                </div>
+
+               
+                <div>
+                    <label for="email" class="block text-sm font-medium text-gray-700 ">
+                        Email
+                    </label>
+                    <div class="mt-1">
+                        <input type="email" name="email" id="email" required
+                               class="block w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
+                               placeholder="Darkaouimeed12@email.com">
+                    </div>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                
+           
+                <div>
+                    <label for="doctor" class="block text-sm font-medium text-gray-700 ">
+                        Doctor
+                    </label>
+                    <div class="mt-1 relative">
+                        <select id="doctor" name="doctor" required
+                                class="block w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm appearance-none pr-10">
+                            <option value="" disabled selected>Select a doctor</option>
+                            <option value="dr-leila">Dr. Leila Elmorabit</option>
+                            <option value="dr-ali">Dr.Ali EL Omari</option>
+                            <option value="dr-kendal">Dr. Kendal Jenner</option>
+                             <option value="dr-amine">Dr.Amine ElAlami</option>
+                        </select>
+                      
+                    </div>
+                </div>
+
+               
+                <div>
+                    <label for="datetime" class="block text-sm font-medium text-gray-700 after:content-['*'] after:ml-0.5 after:text-red-500">
+                        Date and Time
+                    </label>
+                    <div class="mt-1 relative">
+                        <input type="text" name="datetime" id="datetime" required
+                               class="block w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm pr-10"
+                               placeholder="mm/dd/yyyy --:--">
+                       
+                    </div>
+                </div>
+            </div>
+
+            
+            <div>
+                <label for="notes" class="block text-sm font-medium text-gray-700">
+                    Notes / Reason for the visit
+                </label>
+                <div class="mt-1">
+                    <textarea id="notes" name="notes" rows="3"
+                              class="block w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
+                              placeholder="Describe the reason for your consultation..."></textarea>
+                </div>
+            </div>
+
+           
+            <div>
+                <button type="submit"
+                        class="w-full flex justify-center items-center px-4 py-3 border border-transparent text-base font-medium rounded-lg shadow-sm text-white bg-gradient-to-r from-blue-500 to-cyan-500 hover:from-blue-600 hover:to-cyan-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition duration-150 ease-in-out">
+                    
+                    Create the appointment
+                </button>
+            </div>
+        </form>
+    </div>  
+   </section>
+
+   <section class="container mx-auto px-4 py-10 md:py-12"  >
+    
+    
+    <h2 class="text-2xl md:text-3xl font-extrabold text-gray-900 mb-6">
+       My Appointments (0)
+      
+    </h2>
+
+    
+    <div class="bg-white p-10 md:p-20 shadow-lg rounded-xl flex flex-col items-center justify-center text-center border border-gray-100 space-y-4" id="appointmentsList">
+        
+        
+        <svg class="w-16 h-16 text-gray-400 mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+        </svg>
+
+        
+        <p class="text-gray-600 text-lg">
+            You don't have any appointments yet. Create one above!
+            
+        </p>
+    </div>
+    
+</section>
+
+   
+  <script src="/src/config.js"></script>
+    </body>
+
+</html>

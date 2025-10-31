@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="../src/output.css" rel="stylesheet">
+
+</head>
+
+<body  class="bg-gray-50">
+<nav class="bg-blue-500 h-18 w-full flex items-center justify-around px-8">
+  <div class="flex gap-2 items-center   ">
+    <img src="/pictures/medical-team.png" alt="healthcare" class="h-10  ">
+    <p class="text-amber-50">Medicare+</p>
+    
+
+
+
+  </div>
+   <div class="flex">
+    <ul class="flex space-x-8 text-amber-50">
+      <li class="hover:text-black cursor-pointer"><a href="../index.html">Home</a></li>
+      <li><a href="../pages/Doctors.html">Doctors</a></li>
+      <li><a href="../pages/Appointements.html">Appointements</a></li>
+      <li><a href="#">Health Tracking</a></li>
+        
+
+
+
+
+    </ul>
+   </div>
+  <div class="flex justify-between gap-5 items-center-safe">
+                <h6 class="text-1xl text-amber-50">Light</h6>
+               <label for="check" class="bg-blue-900 cursor-pointer relative w-20 h-10 rounded-full">
+                <input type="checkbox" id="check" class="sr-only peer">
+                <span class="w-2/5 h-4/5 bg-blue-300 absolute rounded-full
+                left-1 top-1 peer-checked:bg-blue-600 peer-checked:left-11
+                transition-all duration-500"></span>
+                </label>
+               <h6 class="text-1xl text-amber-50">Dark</h6>
+            </div>
+ </nav>
+
+ <section class="container mx-auto px-4 py-10 md:py-24">
+    
+    <div class="mb-8">
+        
+        <h1 class="text-4xl md:text-5xl font-extrabold text-gray-900 leading-tight">
+            Our Doctors
+        </h1>
+        
+        <p class="text-lg text-gray-600 mt-2">
+            Find the right specialist for your needs
+        </p>
+    </div>
+    
+  
+    <div class="max-w-3xl">
+        <div class="relative flex items-center bg-white border border-gray-200 rounded-xl shadow-lg p-3">
+           
+            <svg class="w-5 h-5 text-gray-400 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+            </svg>
+            
+           
+            <input 
+                type="text" 
+                placeholder="Find the right specialist for your needs" 
+                class="w-full text-gray-700 placeholder-gray-400 focus:outline-none text-base"
+            >
+        </div>
+    </div>
+ </section >
+ <!--  Doctor Cards  -->
+<section class="container mx-auto px-4 py-5 md:py-16">
+    
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+
+        <!-- CARD 1: -->
+        <div class="bg-white rounded-xl shadow-lg overflow-hidden border border-gray-100 shadow-2xl hover:scale-105 transform transition duration-300 cursor-pointer">
+            
+            <div class="relative h-48">
+                
+                <img src="../pictures/doctor01.jpg" alt="Dr. Leila Elmorabit" class="w-full h-full object-cover">
+                
+                <span class="absolute top-3 left-3 bg-green-500 text-white text-xs font-semibold px-3 py-1 rounded-full">
+                    Available
+                </span>
+            </div>
+
+            
+            <div class="p-5">
+                <h3 class="text-xl font-bold text-gray-900 mb-1">Dr. Leila Elmorabit</h3>
+                <p class="text-blue-600 text-sm mb-3">Gynecology</p>
+                
+                <p class="text-gray-600 text-sm mb-5">
+                    Obstetrician-gynecologist with a caring approach
+                </p>
+
+               
+                <button class="w-full py-3 text-white font-semibold rounded-lg 
+                               bg-gradient-to-r from-blue-500 to-cyan-400 
+                               hover:from-blue-600 hover:to-cyan-500 transition duration-300">
+                   Book an appointment
+                </button>
+            </div>
+        </div>
+
+        <!-- CARD 2: -->
+        <div class="bg-white rounded-xl shadow-lg overflow-hidden border border-gray-100 shadow-2xl hover:scale-105 transform transition duration-300 cursor-pointer">
+            <div class="relative h-48">
+                <img src="../pictures/doctor3.avif" alt="Dr. Claire Moreau" class="w-full h-full object-cover">
+                <span class="absolute top-3 left-3 bg-green-500 text-white text-xs font-semibold px-3 py-1 rounded-full">
+                   Available
+
+                </span>
+            </div>
+            <div class="p-5">
+                <h3 class="text-xl font-bold text-gray-900 mb-1">Dr. Ali Elomari</h3>
+                <p class="text-blue-600 text-sm mb-3">Neurology</p>
+                
+                <p class="text-gray-600 text-sm mb-5">
+                   Experienced neurologist specializing in neurological disorders.
+                </p>
+
+                <button class="w-full py-3 text-white font-semibold rounded-lg 
+                               bg-gradient-to-r from-blue-500 to-cyan-400 
+                               hover:from-blue-600 hover:to-cyan-500 transition duration-300">
+                 Book an appointment
+
+                </button>
+            </div>
+        </div>
+
+        <!-- CARD 3: -->
+        <div class="bg-white rounded-xl shadow-lg overflow-hidden border border-gray-100 shadow-2xl hover:scale-105 transform transition duration-300 cursor-pointer">
+            <div class="relative h-48">
+                <img src="../pictures/doctor2.jpg" alt="Dr. Jean Martin" class="w-full h-full object-cover">
+                <span class="absolute top-3 left-3 bg-green-500 text-white text-xs font-semibold px-3 py-1 rounded-full">
+                    Available
+                </span>
+            </div>
+            <div class="p-5">
+                <h3 class="text-xl font-bold text-gray-900 mb-1">Dr. Kendal jenner</h3>
+                <p class="text-blue-600 text-sm mb-3">Dermatology</p>
+                
+                <p class="text-gray-600 text-sm mb-5">
+                   Expert in dermatology and skin care.
+                </p>
+
+                <button class="w-full py-3 text-white font-semibold rounded-lg 
+                               bg-gradient-to-r from-blue-500 to-cyan-400 
+                               hover:from-blue-600 hover:to-cyan-500 transition duration-300">
+                    Book an appointment
+                </button>
+            </div>
+        </div>
+
+        <!-- CARD 4: -->
+        <div class="bg-white rounded-xl shadow-lg overflow-hidden border border-gray-100 shadow-2xl hover:scale-105 transform transition duration-300 cursor-pointer">
+            <div class="relative h-48">
+                <img src="../pictures/doctor4.jpg" alt="Dr. Luc Bernard" class="w-full h-full object-cover">
+                
+                <span class="absolute top-3 left-3 bg-red-500 text-white text-xs font-semibold px-3 py-1 rounded-full">
+                   Unavailable
+
+                </span>
+            </div>
+            <div class="p-5">
+                <h3 class="text-xl font-bold text-gray-900 mb-1">Dr. Abdelhafid Elmahfoudi</h3>
+                <p class="text-blue-600 text-sm mb-3">Ophtalmology</p>
+                
+                <p class="text-gray-600 text-sm mb-5">
+              Ophthalmologist specialized in refractive surgery.
+                </p>
+
+                
+                <button disabled class="w-full py-3 text-white font-semibold rounded-lg 
+                               bg-gray-400 cursor-not-allowed">
+                   Book an appointment
+                </button>
+            </div>
+        </div>
+
+        <!-- CARD 5:  -->
+        <div class="bg-white rounded-xl shadow-lg overflow-hidden border border-gray-100 shadow-2xl hover:scale-105 transform transition duration-300 cursor-pointer">
+            <div class="relative h-48">
+                <img src="../pictures/doctor8.jpg" alt="Dr. Oumaima Jaatit" class="w-full h-full object-cover">
+                
+                <span class="absolute top-3 left-3 bg-orange-500 text-white text-xs font-semibold px-3 py-1 rounded-full">
+                   Busy
+                </span>
+            </div>
+            <div class="p-5">
+                <h3 class="text-xl font-bold text-gray-900 mb-1">Dr. Oumaima Jaatit</h3>
+                <p class="text-blue-600 text-sm mb-3">Psychiatry</p>
+                
+                <p class="text-gray-600 text-sm mb-5">
+                   Psychiatrist specialized in cognitive and behavioral therapy.
+                </p>
+
+                <button class="w-full py-3 text-white font-semibold rounded-lg 
+                               bg-gradient-to-r from-blue-500 to-cyan-400 
+                               hover:from-blue-600 hover:to-cyan-500 transition duration-300">
+                    Book an appointment
+                </button>
+            </div>
+        </div>
+
+        <!-- CARD 6:  -->
+        <div class="bg-white rounded-xl shadow-lg overflow-hidden border border-gray-100 shadow-2xl hover:scale-105 transform transition duration-300 cursor-pointer">
+            <div class="relative h-48">
+                <img src="../pictures/doctor.jpg" alt="Dr. Amine Elalami" class="w-full h-full object-cover">
+                <span class="absolute top-3 left-3 bg-green-500 text-white text-xs font-semibold px-3 py-1 rounded-full">
+                    Available
+                </span>
+            </div>
+            <div class="p-5">
+                <h3 class="text-xl font-bold text-gray-900 mb-1">Dr. Amine Elalami</h3>
+                <p class="text-blue-600 text-sm mb-3">Cardiology</p>
+                
+                <p class="text-gray-600 text-sm mb-5">
+              Specialist in cardiology with 15 years of experience.
+                </p>
+
+                <button class="w-full py-3 text-white font-semibold rounded-lg 
+                               bg-gradient-to-r from-blue-500 to-cyan-400 
+                               hover:from-blue-600 hover:to-cyan-500 transition duration-300">
+                    Book an appointment
+                </button>
+            </div>
+        </div>
+
+    </div>
+</section>
+<footer  class=" h-40bg-gray-300 border-t border-gray-200 py-6 ">
+
+    <div class="">
+      <div class="container mx-auto text-center text-sm text-gray-600">
+        &copy; 2025 MediCare Plus. Your health, our priority.
+      </div>
+    </div></div>
+  </footer>
+
+
+
+</body>
+</html>

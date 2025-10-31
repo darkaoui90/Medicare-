@@ -1,0 +1,208 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="/output.css" rel="stylesheet">
+</head>
+ <body class="bg-gray-50">
+ <nav class="bg-blue-500 h-18 w-full flex items-center justify-around px-8">
+  <div class="flex gap-2 items-center   ">
+    <img src="/pictures/medical-team.png" alt="healthcare" class="h-10  ">
+    <p class="text-amber-50">Medicare+</p>
+    
+
+
+
+  </div>
+   <div class="flex">
+    <ul class="flex space-x-8 text-amber-50">
+      <li class="hover:text-black cursor-pointer"><a href="#">Home</a></li>
+      <li><a href="./pages/Doctors.html">Doctors</a></li>
+      <li><a href="./pages/Appointements.html">Appointements</a></li>
+      <li><a href="#">Health Tracking</a></li>
+        
+
+
+
+
+    </ul>
+   </div>
+  <div class="flex justify-between gap-5 items-center-safe">
+                <h6 class="text-1xl text-amber-50">Light</h6>
+               <label for="check" class="bg-blue-900 cursor-pointer relative w-20 h-10 rounded-full">
+                <input type="checkbox" id="check" class="sr-only peer">
+                <span class="w-2/5 h-4/5 bg-blue-300 absolute rounded-full
+                left-1 top-1 peer-checked:bg-blue-600 peer-checked:left-11
+                transition-all duration-500"></span>
+                </label>
+               <h6 class="text-1xl text-amber-50">Dark</h6>
+            </div>
+ </nav>
+ <section class="flex justify-center items-center mt-10" >
+  
+    
+  
+    <div class="w-[80%] h-80 flex justify-center items-center rounded-xl shadow-lg transition-all duration-700 opacity-100 relative" id="carousel-container">
+   
+    <button id="prev-button" class="absolute left-4 w-10 h-10 bg-white bg-opacity-30 hover:bg-opacity-50 rounded-full flex items-center justify-center text-gray-400 text-xl z-10 transition-all duration-300">
+        &lt;
+    </button>
+
+    
+    <div id="carousel-content" class="text-white text-center p-4">
+     
+        <h3 id="advice-title" class="text-2xl font-semibold mb-2"></h3>
+        <p id="advice-description" class="text-lg"></p>
+     
+        <div id="indicators" class="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-2">
+
+        </div>
+    </div>
+
+    
+    <button id="next-button" class="absolute right-4 w-10 h-10 bg-white bg-opacity-30 hover:bg-opacity-50 rounded-full flex items-center justify-center text-gray-400 text-xl z-10 transition-all duration-300">
+        &gt;
+    </button>
+</div>
+
+    
+  </div>
+   
+ </section>
+ <section>
+  <div id="search-wrapper" class="flex justify-center p-4 mt-6">
+    <div class="relative w-[45%]">
+      
+      <span class="absolute inset-y-0 left-0 flex items-center pl-3">
+        <svg class="w-5 h-5 text-gray-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="11" cy="11" r="8"></circle>
+          <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+        </svg>
+      </span>
+
+      <input 
+        type="text" oninput="fun()"
+          id="article-search-input"
+        class="w-full py-3 pl-10 pt-3 pb-3 pr-4 border border-gray-200 rounded-xl shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+        placeholder="Search articles, topics, or categories..."
+      >
+    </div>
+  </div>
+</section>
+<section>
+   <div class="container mx-auto p-6 md:p-8">
+    
+    
+    <div class=" grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-12" id="article-grid">
+
+     
+      <div class="bg-white p-6 rounded-xl border border-gray-200 shadow-sm flex flex-col">
+        <h3 class="text-lg font-bold text-gray-900">Understanding Blood Pressure</h3>
+        <p class="text-gray-500 mt-1">Cardiology</p>
+        <p class="text-gray-600 mt-4 ">Learn about healthy blood pressure ranges and management.</p>
+      </div>
+
+      <div class="bg-white p-6 rounded-xl border border-gray-200 shadow-sm flex flex-col">
+        <h3 class="text-lg font-bold text-gray-900">Nutrition Basics for Better Health</h3>
+        <p class="text-gray-500 mt-1">Nutrition</p>
+        <p class="text-gray-600 mt-4 grow">Essential nutrients and how to incorporate them into your diet.</p>
+      </div>
+
+  
+      <div class="bg-white p-6 rounded-xl border border-gray-200 shadow-sm flex flex-col">
+        <h3 class="text-lg font-bold text-gray-900">Mental Health Awareness</h3>
+        <p class="text-gray-500 mt-1">Psychology</p>
+        <p class="text-gray-600 mt-4 grow">Recognizing signs of stress and anxiety and how to cope.</p>
+      </div>
+
+     
+      <div class="bg-white p-6 rounded-xl border border-gray-200 shadow-sm flex flex-col">
+        <h3 class="text-lg font-bold text-gray-900">Diabetes Prevention Tips</h3>
+        <p class="text-gray-500 mt-1">Endocrinology</p>
+        <p class="text-gray-600 mt-4 grow">Lifestyle changes to reduce your risk of type 2 diabetes.</p>
+      </div>
+
+   
+      <div class="bg-white p-6 rounded-xl border border-gray-200 shadow-sm flex flex-col">
+        <h3 class="text-lg font-bold text-gray-900">The Importance of Regular Checkups</h3>
+        <p class="text-gray-500 mt-1">General Health</p>
+        <p class="text-gray-600 mt-4 grow">Why annual health screenings matter for prevention.</p>
+      </div>
+
+      
+      <div class="bg-white p-6 rounded-xl border border-gray-200 shadow-sm flex flex-col">
+        <h3 class="text-lg font-bold text-gray-900">Exercise for Heart Health</h3>
+        <p class="text-gray-500 mt-1">Cardiology</p>
+        <p class="text-gray-600 mt-4 grow">Best exercises to strengthen your cardiovascular system.</p>
+      </div>
+
+    </div>
+  </div>
+  
+</section>
+ <section class="py-16 md:py-24">
+    <div class="container mx-auto px-6 max-w-6xl">
+
+     
+      <h2 class="text-3xl md:text-4xl font-bold text-gray-900 text-center mb-12 md:mb-16">
+       Why choose Medicare+ ?
+      </h2>
+
+      
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
+
+        <!-- Card 1:  -->
+        <div class="bg-white p-6 rounded-2xl shadow-lg text-center flex flex-col items-center">
+        <div class="w-16 h-16 rounded-xl flex items-center justify-center mb-6 bg-gradient-to-tr from-pink-500 to-red-600">
+          <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path></svg>
+          </div>
+          
+          <h3 class="text-xl font-bold text-gray-900 mb-2">Quality care</h3>
+          <p class="text-gray-600 text-base">Access the best health professionals</p>
+        </div>
+
+        <!-- Card 2: -->
+        <div class="bg-white p-6 rounded-2xl shadow-lg text-center flex flex-col items-center">
+        <div class="w-16 h-16 rounded-xl flex items-center justify-center mb-6 bg-gradient-to-tr from-cyan-400 to-blue-500">
+            <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.001 12.001 0 002 12c0 2.514.88 4.836 2.372 6.636L12 22l7.628-3.364A12.001 12.001 0 0022 12c0-4.079-1.39-7.85-3.618-10.976z"></path></svg>
+          </div>
+           <h3 class="text-xl font-bold text-gray-900 mb-2">Secure and Confidential</h3>
+          <p class="text-gray-600 text-base">Your data is protected and secured</p>
+        </div>
+
+        <!-- Card 3:  -->
+        <div class="bg-white p-6 rounded-2xl shadow-lg text-center flex flex-col items-center">
+          <div class="w-16 h-16 rounded-xl flex items-center justify-center mb-6 bg-gradient-to-tr from-green-500 to-emerald-600">
+            <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+          </div>
+          
+          <h3 class="text-xl font-bold text-gray-900 mb-2">Available 24/7</h3>
+          <p class="text-gray-600 text-base">Book your appointment anytime</p>
+        </div>
+
+        <!-- Card 4:  -->
+        <div class="bg-white p-6 rounded-2xl shadow-lg text-center flex flex-col items-center  ">
+          <div class="w-16 h-16 rounded-xl flex items-center justify-center mb-6 bg-gradient-to-tr from-yellow-500 to-orange-600">
+            <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 7a2 2 0 012 2m4 0a6 6 0 01-7.743 5.743L11 21v-3.692c0-.653.298-1.288.825-1.713l1.45-1.16a3.5 3.5 0 00.125-4.887l-1.45-1.16a3.5 3.5 0 00-4.887.125L4.825 8.595a3.5 3.5 0 00-1.713.825V21l-2.25-2.25M15 7a2 2 0 00-2-2"></path></svg>
+          </div>
+           <h3 class="text-xl font-bold text-gray-900 mb-2">Certified Doctors</h3>
+          <p class="text-gray-600 text-base">All our doctors are certified and experienced</p>
+        </div>
+      </div>
+    </div>
+  </section>
+  <footer  class="mb-10">
+
+    <div class="bg-gray-300 border-t border-gray-200 py-6 mb-10">
+      <div class="container mx-auto text-center text-sm text-gray-600">
+        &copy; 2025 MediCare Plus. Your health, our priority.
+      </div>
+    </div></div>
+  </footer>
+
+<script src="/src/config.js"></script>
+</body>
+
+</body> 
+</html>
