@@ -59,7 +59,7 @@
             New Appointment
         </h2>
         
-        <form class="space-y-6" id="appointmentForm">
+        <form class="space-y-6" id="appointmentForm" novalidate>
             
            
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -74,6 +74,7 @@
                                class="block w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
                                placeholder="Mohammed Darkaoui">
                     </div>
+                    <p class="mt-2 text-sm text-red-600 hidden" id="full-name-error"></p>
                 </div>
 
                
@@ -86,6 +87,7 @@
                                class="block w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
                                placeholder="Darkaouimeed12@email.com">
                     </div>
+                    <p class="mt-2 text-sm text-red-600 hidden" id="email-error"></p>
                 </div>
             </div>
 
@@ -103,10 +105,11 @@
                             <option value="dr-leila">Dr. Leila Elmorabit</option>
                             <option value="dr-ali">Dr.Ali EL Omari</option>
                             <option value="dr-kendal">Dr. Kendal Jenner</option>
-                             <option value="dr-amine">Dr.Amine ElAlami</option>
+                            <option value="dr-amine">Dr.Amine ElAlami</option>
                         </select>
                       
                     </div>
+                    <p class="mt-2 text-sm text-red-600 hidden" id="doctor-error"></p>
                 </div>
 
                
@@ -115,11 +118,12 @@
                         Date and Time
                     </label>
                     <div class="mt-1 relative">
-                        <input type="text" name="datetime" id="datetime" required
+                        <input type="datetime-local" name="datetime" id="datetime" required
                                class="block w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm pr-10"
                                placeholder="mm/dd/yyyy --:--">
                        
                     </div>
+                    <p class="mt-2 text-sm text-red-600 hidden" id="datetime-error"></p>
                 </div>
             </div>
 
@@ -142,6 +146,7 @@
                     
                     Create the appointment
                 </button>
+                <p class="mt-4 text-sm font-medium hidden" id="form-message"></p>
             </div>
         </form>
     </div>  
@@ -150,10 +155,10 @@
    <section class="container mx-auto px-4 py-10 md:py-12"  >
     
     
-    <h2 class="text-2xl md:text-3xl font-extrabold text-gray-900 mb-6">
-       My Appointments (0)
-      
-    </h2>
+    <h2 class="text-2xl md:text-3xl font-extrabold text-gray-900 mb-6" id="appointmentsCountTitle">
+   My Appointments (<span id="appointmentsCount">0</span>)
+</h2>
+
 
     
     <div class="bg-white p-10 md:p-20 shadow-lg rounded-xl flex flex-col items-center justify-center text-center border border-gray-100 space-y-4" id="appointmentsList">
@@ -169,11 +174,241 @@
             
         </p>
     </div>
-    
+   
 </section>
 
    
-  <script src="/src/config.js"></script>
+<script src="/src/config.js"></script>
+<script>
+var appointmentForm = document.getElementById('appointmentForm');
+var appointmentsList = document.getElementById('appointmentsList');
+var appointmentsCount = document.getElementById('appointmentsCount');
+var formMessage = document.getElementById('form-message');
+var fullNameInput = document.getElementById('full-name');
+var emailInput = document.getElementById('email');
+var doctorSelect = document.getElementById('doctor');
+var datetimeInput = document.getElementById('datetime');
+var notesInput = document.getElementById('notes');
+var fullNameError = document.getElementById('full-name-error');
+var emailError = document.getElementById('email-error');
+var doctorError = document.getElementById('doctor-error');
+var datetimeError = document.getElementById('datetime-error');
+
+var storageKey = 'medicare-appointments';
+var appointmentsData = [];
+
+function showMessage(text, type) {
+    if (!formMessage) {
+        return;
+    }
+    formMessage.textContent = text;
+    formMessage.classList.remove('hidden', 'text-red-600', 'text-green-600');
+    if (type === 'error') {
+        formMessage.classList.add('text-red-600');
+    } else {
+        formMessage.classList.add('text-green-600');
+    }
+    setTimeout(function () {
+        formMessage.classList.add('hidden');
+    }, 4000);
+}
+
+function setFieldState(input, errorLabel, message) {
+    if (!input) {
+        return;
+    }
+    if (message) {
+        errorLabel.textContent = message;
+        errorLabel.classList.remove('hidden');
+        input.classList.add('border-red-500');
+        input.classList.remove('border-green-500');
+    } else {
+        errorLabel.textContent = '';
+        errorLabel.classList.add('hidden');
+        input.classList.remove('border-red-500');
+        input.classList.add('border-green-500');
+    }
+}
+
+function validateFullName() {
+    var value = fullNameInput.value.trim();
+    if (value.length === 0) {
+        setFieldState(fullNameInput, fullNameError, 'Full name is required.');
+        return false;
+    }
+    if (value.length < 3) {
+        setFieldState(fullNameInput, fullNameError, 'Write at least 3 characters.');
+        return false;
+    }
+    setFieldState(fullNameInput, fullNameError, '');
+    return true;
+}
+
+function validateEmail() {
+    var value = emailInput.value.trim();
+    var pattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (value.length === 0) {
+        setFieldState(emailInput, emailError, 'Email is required.');
+        return false;
+    }
+    if (!pattern.test(value)) {
+        setFieldState(emailInput, emailError, 'Email format is invalid.');
+        return false;
+    }
+    setFieldState(emailInput, emailError, '');
+    return true;
+}
+
+function validateDoctor() {
+    var value = doctorSelect.value;
+    if (!value) {
+        setFieldState(doctorSelect, doctorError, 'Pick a doctor.');
+        return false;
+    }
+    setFieldState(doctorSelect, doctorError, '');
+    return true;
+}
+
+function validateDateTime() {
+    var value = datetimeInput.value;
+    if (!value) {
+        setFieldState(datetimeInput, datetimeError, 'Choose a date.');
+        return false;
+    }
+    var selected = new Date(value);
+    var now = new Date();
+    if (isNaN(selected.getTime())) {
+        setFieldState(datetimeInput, datetimeError, 'Date format is incorrect.');
+        return false;
+    }
+    if (selected <= now) {
+        setFieldState(datetimeInput, datetimeError, 'Pick a future time.');
+        return false;
+    }
+    setFieldState(datetimeInput, datetimeError, '');
+    return true;
+}
+
+function loadAppointments() {
+    var saved = localStorage.getItem(storageKey);
+    if (saved) {
+        try {
+            var parsed = JSON.parse(saved);
+            if (Array.isArray(parsed)) {
+                appointmentsData = parsed;
+            }
+        } catch (e) {
+            console.log('Could not read saved appointments.');
+        }
+    }
+}
+
+function saveAppointments() {
+    localStorage.setItem(storageKey, JSON.stringify(appointmentsData));
+}
+
+function getDoctorLabel(value) {
+    if (value === 'dr-leila') return 'Dr. Leila Elmorabit';
+    if (value === 'dr-ali') return 'Dr.Ali EL Omari';
+    if (value === 'dr-kendal') return 'Dr. Kendal Jenner';
+    if (value === 'dr-amine') return 'Dr.Amine ElAlami';
+    return value;
+}
+
+function formatDate(value) {
+    var date = new Date(value);
+    if (isNaN(date.getTime())) {
+        return value;
+    }
+    return date.toLocaleString();
+}
+
+function renderAppointments() {
+    appointmentsCount.textContent = appointmentsData.length;
+    if (appointmentsData.length === 0) {
+        appointmentsList.innerHTML = '<svg class="w-16 h-16 text-gray-400 mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg><p class="text-gray-600 text-lg">You don\'t have any appointments yet. Create one above!</p>';
+        return;
+    }
+
+    var html = '';
+    for (var i = 0; i < appointmentsData.length; i++) {
+        var item = appointmentsData[i];
+        html += '<article class="w-full bg-white border border-gray-200 rounded-xl shadow-sm p-6 space-y-4 md:space-y-0 md:flex md:items-center md:justify-between md:gap-6">';
+        html += '<div class="space-y-2">';
+        html += '<h3 class="text-xl font-semibold text-gray-800">' + item.fullName + '</h3>';
+        html += '<p class="text-sm text-gray-500">Doctor: ' + getDoctorLabel(item.doctor) + '</p>';
+        html += '<p class="text-sm text-gray-500">Email: ' + item.email + '</p>';
+        if (item.notes) {
+            html += '<p class="text-sm text-gray-600">' + item.notes + '</p>';
+        }
+        html += '</div>';
+        html += '<div class="space-y-2 text-sm text-gray-500 md:text-right">';
+        html += '<p class="text-base font-medium text-gray-700">' + formatDate(item.datetime) + '</p>';
+        html += '<p>Booked on ' + formatDate(item.createdAt) + '</p>';
+        html += '</div>';
+        html += '</article>';
+    }
+    appointmentsList.innerHTML = html;
+}
+
+function validateForm() {
+    var ok = true;
+    if (!validateFullName()) ok = false;
+    if (!validateEmail()) ok = false;
+    if (!validateDoctor()) ok = false;
+    if (!validateDateTime()) ok = false;
+    return ok;
+}
+
+function resetFieldStyles() {
+    fullNameInput.classList.remove('border-green-500', 'border-red-500');
+    emailInput.classList.remove('border-green-500', 'border-red-500');
+    doctorSelect.classList.remove('border-green-500', 'border-red-500');
+    datetimeInput.classList.remove('border-green-500', 'border-red-500');
+    fullNameError.classList.add('hidden');
+    emailError.classList.add('hidden');
+    doctorError.classList.add('hidden');
+    datetimeError.classList.add('hidden');
+}
+
+fullNameInput.addEventListener('input', validateFullName);
+fullNameInput.addEventListener('blur', validateFullName);
+emailInput.addEventListener('input', validateEmail);
+emailInput.addEventListener('blur', validateEmail);
+doctorSelect.addEventListener('change', validateDoctor);
+datetimeInput.addEventListener('input', validateDateTime);
+datetimeInput.addEventListener('blur', validateDateTime);
+
+loadAppointments();
+renderAppointments();
+
+appointmentForm.addEventListener('submit', function (event) {
+    event.preventDefault();
+
+    if (!validateForm()) {
+        showMessage('Please fix the red fields before submitting.', 'error');
+        return;
+    }
+
+    var newAppointment = {
+        fullName: fullNameInput.value.trim(),
+        email: emailInput.value.trim(),
+        doctor: doctorSelect.value,
+        datetime: datetimeInput.value,
+        notes: notesInput ? notesInput.value.trim() : '',
+        createdAt: new Date().toISOString()
+    };
+
+    appointmentsData.unshift(newAppointment);
+    saveAppointments();
+    renderAppointments();
+
+    appointmentForm.reset();
+    resetFieldStyles();
+    showMessage('Appointment saved successfully.', 'success');
+});
+</script>
+
     </body>
 
 </html>
